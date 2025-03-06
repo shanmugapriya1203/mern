@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import { useEffect ,useState} from 'react';
+import UserContext from './context/UserContext';
+import Profile from './components/Profile';
+
+
+
+
+//Jsx 
+//Props->properties parent component-child components
+//useeffect-allows you to perfrom sideeffect fetching data,updating the dom,or logging values
+//dependency array
+//Usecontext->that helps manage and share between multiple components without needing to pass props manualy to easer values
 function App() {
+const [user,setUser]=useState("Virat kohli")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<div className='App'>
+<UserContext.Provider value={user}>
+<h1>Cricket Team</h1>
+<Profile/>
+
+</UserContext.Provider>
+</div>
   );
 }
 
